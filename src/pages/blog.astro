@@ -1,5 +1,8 @@
 ---
-const allPosts = await Astro.glob('./posts/*.md');
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+console.log('Found posts:', posts.length);
 ---
 
 <html lang="en">
@@ -21,14 +24,18 @@ const allPosts = await Astro.glob('./posts/*.md');
 		<p>This is where I will post about my journey learning Astro.</p>
 
 		<div>
-			{allPosts.map((post) => (
-				<article>
-					<h2>{post.frontmatter.title}</h2>
-					<p>{post.frontmatter.description}</p>
-					<p>Published on: {post.frontmatter.pubDate}</p>
-					<a href={post.url}>Read more</a>
-				</article>
-			))}
+			{posts.length > 0 ? (
+				posts.map((post) => (
+					<article>
+						<h2>{post.data.title}</h2>
+						<p>{post.data.description}</p>
+						<p>Published on: {post.data.pubDate.toDateString()}</p>
+						<a href={`/posts/${post.slug}`}>Read more</a>
+					</article>
+				))
+			) : (
+				<p>No blog posts found.</p>
+			)}
 		</div>
 	</body>
 </html></content>
