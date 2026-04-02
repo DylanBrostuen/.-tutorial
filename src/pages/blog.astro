@@ -1,55 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
-
-const posts = await getCollection('posts');
-console.log('Found posts:', posts.length);
 ---
-
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Blog</title>
-	</head>
-	<body>
-		<nav>
-			<a href="/">Home</a>
-			<a href="/about">About</a>
-			<a href="/blog">Blog</a>
-		</nav>
-		<h1>My Astro Learning Blog</h1>
-		<p>This is where I will post about my journey learning Astro.</p>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
 
-		<div>
-			{posts.length > 0 ? (
-				posts.map((post) => (
-					<article>
-						<h2>{post.data.title}</h2>
-						<p>{post.data.description}</p>
-						<p>Published on: {post.data.pubDate.toDateString()}</p>
-						<a href={`/posts/${post.slug}`}>Read more</a>
-					</article>
-				))
-			) : (
-				<article>
-					<h2>My First Blog Post</h2>
-					<p>This is the first post of my new Astro blog.</p>
-					<p>Published on: 2022-07-01</p>
-					<p>Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.</p>
-					<h3>What I've accomplished</h3>
-					<ol>
-						<li><strong>Installing Astro</strong>: First, I created a new Astro project and set up my online accounts.</li>
-						<li><strong>Making Pages</strong>: I then learned how to make pages by creating new <code>.astro</code> files and placing them in the <code>src/pages/</code> folder.</li>
-						<li><strong>Making Blog Posts</strong>: This is my first blog post! I now have Astro pages and Markdown posts!</li>
-					</ol>
-					<h3>What's next</h3>
-					<p>I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.</p>
-				</article>
-			)}
-		</div>
-	</body>
+    <h1>My Astro Learning Blog</h1>
+    <p>This is where I will post about my journey learning Astro.</p>
+    <ul>
+      <li><a href="/posts/post-1/">Post 1</a></li>
+    </ul>
+  </body>
 </html></content>
 <parameter name="filePath">c:\Users\deeja\tutorial\src\pages\blog.astro
